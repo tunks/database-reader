@@ -53,7 +53,6 @@ public class MysqlBinLogEventDataProcessor extends EventDataProcessor {
         } //For UPDATE operations
         else if (EventType.isUpdate(eventType)) {
             UpdateRowsEventData data = event.getData();
-
         } //For DELETE operation
         else if (EventType.isDelete(eventType)) {
             DeleteRowsEventData data = event.getData();
