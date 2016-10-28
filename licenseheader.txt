@@ -1,0 +1,3 @@
+/**
+ Data reader simple application to reader data from mysql bin log and post to kafka
+**/
