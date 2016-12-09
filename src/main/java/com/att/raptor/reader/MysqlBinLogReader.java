@@ -1,6 +1,7 @@
 /*** data reader simple application to reader data from mysql bin log and post to kafka ***/
 package com.att.raptor.reader;
 
+import com.att.raptor.processor.DataHandler;
 import com.github.shyiko.mysql.binlog.event.Event;
 
 /**
@@ -8,13 +9,15 @@ import com.github.shyiko.mysql.binlog.event.Event;
  * @author ebrimatunkara
  */
 public class MysqlBinLogReader implements IReader<Event>{
-    public MysqlBinLogReader(){
-    
+    private final DataHandler handler;
+
+    public MysqlBinLogReader(DataHandler handler) {
+        this.handler = handler;
     }
+ 
 
     @Override
     public void read(Event event) {
-           System.out.println(" event header:: "+event.getHeader());
-          System.out.println(" event data:: "+event.getData());
+          handler.handlerData(event);
     }
 }
